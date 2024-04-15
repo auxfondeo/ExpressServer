@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/cartas.css">
+    <title>Cartas de Reestrura</title>
+</head>
+<body>
+    <div class="imagen">
+        <img src="/logo_plan.png" class="logo" alt="Descripción de la imagen">
+    </div>
+    <section class="form-register">
+        <h4>Envio de Cartas</h4>
+        <form action="/Cartas" method="post">
+            <label for="nombre">Nombre de Cliente</label>
+            <br><br>
+            <!-- Agregar el atributo maxlength para limitar el número máximo de caracteres -->
+            <input type="text" class="controls" id="ApPat" name="ApPat" placeholder="Ingrese su apellido paterno" maxlength="50" pattern="[A-Za-zñÑ\s]+" title="El nombre no debe contener números ni caracteres especiales" required oninput="this.value = this.value.toUpperCase()">
+             
+            <!-- Agregar el atributo maxlength para limitar el número máximo de caracteres -->
+            <input type="text" class="controls" id="ApMat" name="ApMat" placeholder="Ingrese su apellido materno" maxlength="50" pattern="[A-Za-zñÑ\s]+" title="El nombre no debe contener números ni caracteres especiales" required>
+           
+            <!-- Agregar el atributo maxlength para limitar el número máximo de caracteres -->
+            <input type="Nombres" class="controls" id="Nombres" name="Nombres" placeholder="Ingrese sus nombres" maxlength="50" pattern="[A-Za-zñÑ\s]+" title="El nombre no debe contener números ni caracteres especiales" required>
+            <label for="nombre">Fecha de descuento</label>
+            <br><br>
+            <input type="text" class="controls" id="fecha" name="fecha" placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{4}">
+            <h3>Seleccione los plazos:</h3>
+            <select id="Lista" name="Lista">
+                <option value="Catorcena">CNA</option>
+                <option value="Quincena">QNA</option>
+                <br><br>
+    
+                
+            </select>
+            <br><br>
+            <h3>Ingrese el numero de quincena/catorcena:</h3>
+            <input type="text" class="controls" id="Numero" name="Numero" placeholder="Numero" maxlength="2" pattern="[0-9]+" title="Solo se admiten numeros"  required>
+            <br><br>
+    
+            
+        
+        <button class="botons" type="">Enviar</button>
+        </form>
+    </section>
+
+    <label>
+        <input type="checkbox">
+        <div class="toogle">
+            <span class="top_line common"></span>
+            <span class="middle_line common"></span>
+            <span class="bottom_line common"></span>
+        </div>
+    
+
+        <div class="slide">
+            <h1>MENU</h1>
+            <ul class="mainlist">
+                <li>
+                    <a href="#" id="Tesoreria-toggle"><i class="fa fa-building"></i> Tesoreria</a>
+                    <ul class="sublist">
+                        <li><a href="/EstCuenta.html">Estado de Cuenta</a></li>
+                        <li><a href="/Cartas.html">Cartas de Reestructura</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><i class="fa fa-university"></i> Cobranza</a></li>
+                <li><a href="#"><i class="fa fa-bar-chart"></i> Marketing</a></li>
+                <li><a href="#"><i class="fa fa-gavel"></i> Legal</a></li>
+                <li><a href="#"><i class="fa fa-desktop"></i> TI</a></li>
+                <li><a href="#"><i class="fa fa-archive"></i> Fondeo</a></li>
+            </ul>
+        </div>
+    </label>
+
+
+    <!-- Script para validar la longitud y el formato del campo Cliente -->
+    <script>
+        // Obtener los elementos de los campos de entrada
+        const nombreInput = document.getElementById("nombre");
+        // Agregar oyentes de eventos para validar la longitud y el formato de los campos
+        nombreInput.addEventListener("input", () => {
+            if (!/^[A-Za-z\s]+$/.test(nombreInput.value)) {
+                nombreInput.setCustomValidity("El nombre no debe contener números ni caracteres especiales");
+            } else {
+                nombreInput.setCustomValidity("");
+            }
+        });
+        
+    </script>
+    <!--------------------------------------------------------------Script para detectar el elemento de la lista--->
+    <script>
+        // Obtener el elemento select
+        var selectElement = document.getElementById("Lista");
+        
+        // Evento change para detectar cuando se selecciona una opción
+        selectElement.addEventListener("change", function() {
+          // Obtener el valor seleccionado
+          var selectedPlazo = selectElement.value;
+          
+          
+        });
+      </script>
+    
+    <!-- Script para validar el formato de fechas -->
+    <script>
+    function soloNumerosYDiagonal(event) {
+        var charCode = (event.which) ? event.which : event.keyCode;
+        if (charCode != 47 && charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+        return true;
+    }
+    </script>
+
+    <!-- Script para convertir los valores ingresados en los campos de entrada a mayúsculas mientras se escribe -->
+    <script>
+        // Obtener los elementos de los campos de entrada
+        const apPatInput = document.getElementById("ApPat");
+        const apMatInput = document.getElementById("ApMat");
+        const nombresInput = document.getElementById("Nombres");
+
+        // Agregar oyentes de eventos para convertir a mayúsculas mientras se escribe
+        apPatInput.addEventListener("input", function() {
+            this.value = this.value.toUpperCase();
+        });
+
+        apMatInput.addEventListener("input", function() {
+            this.value = this.value.toUpperCase();
+        });
+
+        nombresInput.addEventListener("input", function() {
+            this.value = this.value.toUpperCase();
+        });
+    </script>
+<!--------------------------------------------------------------Script para vilidar el numero de quincena o catorcena--->
+<script>
+    // Obtener el elemento del campo "Numero"
+    const numeroInput = document.getElementById("Numero");
+
+    // Agregar un evento de escucha para validar el número
+    numeroInput.addEventListener("input", () => {
+        const numero = parseInt(numeroInput.value);
+        if (isNaN(numero) || numero < 1 || numero > 26) {
+            numeroInput.setCustomValidity("El número debe estar entre 1 y 26");
+        } else {
+            numeroInput.setCustomValidity("");
+        }
+    });
+</script>
+
+<!--------------------------------------------------------------Script para vilidar la fecha--->
+<script>
+    // Obtener el elemento del campo "fecha"
+    const fechaInput = document.getElementById("fecha");
+
+    // Agregar un evento de escucha para validar la fecha
+    fechaInput.addEventListener("input", () => {
+        const fechaValue = fechaInput.value;
+        // Verificar si la fecha tiene el formato correcto (dd/mm/yyyy)
+        const fechaRegex = /^(\d{2})\/(\d{2})\/(\d{4})$/;
+        if (!fechaRegex.test(fechaValue)) {
+            fechaInput.setCustomValidity("El formato de la fecha debe ser dd/mm/yyyy");
+            return;
+        }
+
+        // Extraer los componentes de la fecha
+        const [, dia, mes, anio] = fechaValue.match(fechaRegex);
+
+        // Convertir los componentes de la fecha a números
+        const diaNumero = parseInt(dia, 10);
+        const mesNumero = parseInt(mes, 10);
+        const anioNumero = parseInt(anio, 10);
+
+        // Verificar si la fecha es válida
+        const fecha = new Date(anioNumero, mesNumero - 1, diaNumero);
+        if (
+            fecha.getFullYear() !== anioNumero ||
+            fecha.getMonth() !== mesNumero - 1 ||
+            fecha.getDate() !== diaNumero
+        ) {
+            fechaInput.setCustomValidity("La fecha introducida no es válida");
+        } else {
+            fechaInput.setCustomValidity("");
+        }
+    });
+</script>
+      
+</body>
+</html>

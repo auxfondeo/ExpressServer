@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="/login.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <img class="wave" src="/wave.png">
+    <img class="logo" src="/logo.png">
+    
+    <div class="container">
+        <div class="img">
+            <img src="/img.svg">
+        </div>
+        <div class="login-content">
+            <form action="/login" method="POST"> <!-- Cambiado el atributo action -->
+                <img class="avatar" src="/avatar.svg">
+                <h2 class="title">Bienvenidos</h2>
+                <div class="input-div one">
+                   <div class="i">
+                        <i class="fas fa-user"></i>
+                   </div>
+                   <div>
+                        <h5>Usuario</h5>
+                        <input class="input" type="text" name="username"> <!-- Agregado name="username" -->
+                   </div>
+                </div>
+                <div class="input-div two">
+                   <div class="i"> 
+                        <i class="fas fa-lock"></i>
+                   </div>
+                   <div>
+                        <h5>Contraseña</h5>
+                        <input class="input" type="password" name="password"> <!-- Agregado name="password" -->
+                   </div>
+                </div>
+                
+                <input type="submit" class="btn" value="Login">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Aquí va el código JavaScript
+        const inputs = document.querySelectorAll(".input");
+
+        function addFocus() {
+            let parent = this.parentNode.parentNode;
+            parent.classList.add("focus");
+        }
+
+        function removeFocus() {
+            let parent = this.parentNode.parentNode;
+            if (this.value === "") {
+                parent.classList.remove("focus");
+            }
+        }
+
+        inputs.forEach(input => {
+            input.addEventListener("focus", addFocus);
+            input.addEventListener("blur", removeFocus);
+        });
+    </script>
+</body>
+</html>

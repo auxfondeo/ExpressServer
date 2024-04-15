@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/EstCuenta.css">
+    <title>Estados de Cuenta</title>
+</head>
+<body>
+    <div class="imagen">
+        <img src="/logo_plan.png" class="logo" alt="Descripción de la imagen">
+    </div>
+    <section class="form-register">
+        <h4>Estados de Cuenta</h4>
+        <form action="/concatenar" method="post">
+            
+            <!-- Agregar el atributo maxlength para limitar el número máximo de caracteres -->
+            <input type="text" class="controls" id="ApPat" name="ApPat" placeholder="Ingrese su apellido paterno" maxlength="50" pattern="[A-Za-zñÑ\s]+" title="El nombre no debe contener números ni caracteres especiales" required>
+             
+            <!-- Agregar el atributo maxlength para limitar el número máximo de caracteres -->
+            <input type="text" class="controls" id="ApMat" name="ApMat" placeholder="Ingrese su apellido materno" maxlength="50" pattern="[A-Za-zñÑ\s]+" title="El nombre no debe contener números ni caracteres especiales" required>
+           
+            <!-- Agregar el atributo maxlength para limitar el número máximo de caracteres -->
+            <input type="Nombres" class="controls" id="Nombres" name="Nombres" placeholder="Ingrese sus nombres" maxlength="50" pattern="[A-Za-zñÑ\s]+" title="El nombre no debe contener números ni caracteres especiales" required>
+            <!--
+                <label for="Credito">Crédito:</label>
+                Agregar el atributo maxlength para limitar el número máximo de caracteres 
+                <input type="text" id="Credito" name="Credito" maxlength="5" pattern="[0-9]+" title="El crédito debe contener solo números" required>
+                <br><br>
+            --> 
+            
+            <button class="botons" type="submit">Enviar</button>
+        </form>
+    </section>
+    <label>
+        <input type="checkbox">
+        <div class="toogle">
+            <span class="top_line common"></span>
+            <span class="middle_line common"></span>
+            <span class="bottom_line common"></span>
+        </div>
+    
+
+        <div class="slide">
+            <h1>MENU</h1>
+            <ul class="mainlist">
+                <li>
+                    <a href="#" id="Tesoreria-toggle"><i class="fa fa-building"></i> Tesoreria</a>
+                    <ul class="sublist">
+                        <li><a href="/EstCuenta.html"><i class="fa fa-id-card-o"></i>Estado de Cuenta</a></li>
+                        <li><a href="/Cartas.html"><i class="fa fa-envelope-o"></i>Cartas de Reestructura</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><i class="fa fa-university"></i> Cobranza</a></li>
+                <li><a href="#"><i class="fa fa-bar-chart"></i> Marketing</a></li>
+                <li><a href="#"><i class="fa fa-gavel"></i> Legal</a></li>
+                <li><a href="#"><i class="fa fa-desktop"></i> TI</a></li>
+                <li><a href="#"><i class="fa fa-archive"></i> Fondeo</a></li>
+            </ul>
+        </div>
+    </label>
+    
+    
+
+    <!-- Script para validar la longitud y el formato del campo Cliente -->
+    <script>
+        // Obtener los elementos de los campos de entrada
+        const clienteInput = document.getElementById("ApPat");
+        const Materno = document.getElementById("ApMat");
+        const Nombres = document.getElementById("Nombres");
+
+        
+
+        // Función para validar la entrada en los campos
+        const validarEntrada = (input) => {
+            if (!/^[A-Za-zñÑ\s]+$/.test(input.value)) {
+                input.setCustomValidity("El nombre no debe contener números ni caracteres especiales");
+            } else {
+                input.setCustomValidity("");
+            }
+        };
+
+        // Agregar oyentes de eventos para validar la longitud y el formato de los campos
+        clienteInput.addEventListener("input", () => {
+            validarEntrada(clienteInput);
+        });
+
+        Materno.addEventListener("input", () => {
+            validarEntrada(Materno);
+        });
+
+        Nombres.addEventListener("input", () => {
+            validarEntrada(Nombres);
+        });
+
+        creditoInput.addEventListener("input", () => {
+            if (!/^[0-9]+$/.test(creditoInput.value)) {
+                creditoInput.setCustomValidity("El crédito debe contener solo números");
+            } else {
+                creditoInput.setCustomValidity("");
+            }
+        });
+    </script>
+
+    <!-- Script para convertir los valores ingresados en los campos de entrada a mayúsculas mientras se escribe -->
+    <script>
+        // Obtener los elementos de los campos de entrada
+        const apPatInput = document.getElementById("ApPat");
+        const apMatInput = document.getElementById("ApMat");
+        const nombresInput = document.getElementById("Nombres");
+
+        // Agregar oyentes de eventos para convertir a mayúsculas mientras se escribe
+        apPatInput.addEventListener("input", function() {
+            this.value = this.value.toUpperCase();
+        });
+
+        apMatInput.addEventListener("input", function() {
+            this.value = this.value.toUpperCase();
+        });
+
+        nombresInput.addEventListener("input", function() {
+            this.value = this.value.toUpperCase();
+        });
+    </script>
+</body>
+</html>
